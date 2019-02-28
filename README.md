@@ -148,11 +148,14 @@ int check_char_2(char a) {
 }
 ```
 On veut donc ebx % 256 == 204.
+
 On a ebx = r(a%256, 130);
+
 donc ebx = (a << 8 - 130&7) lor (a >> 130&7); 			//Cf ci-dessous
+
 donc ebx = (a << 8 - 2) lor (a >> 2);
+
 donc ebx = (a * 64) lor (a / 4);
-donc ebx = (a * 64) + a / 4 							//Aucun bit n'est commun donc c'est une addition
 
 Avec a = '3', ça peut marcher ! 
 
