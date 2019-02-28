@@ -99,7 +99,7 @@ donc `ebx % 256== 0`;
 
 donc `(a * 32) & 0xffffffef % 256 == 0`
 
-avec `a = 'H'` ou `a = 'P'` ou `a = 'X'` ou `a = '` \``'` ou `a = 'h'` ou `a = 'p'` ou `a = 'x'`, ça devrait marcher !
+avec `a = 'H'` ou `a = 'P'` ou `a = 'X'` ou <code>a = '`'</code> ou `a = 'h'` ou `a = 'p'` ou `a = 'x'`, ça devrait marcher !
 
 ## Analyse de <check_char_2>
 
