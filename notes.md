@@ -1,15 +1,4 @@
-Notes personnelles pour le challenge :
-
-Utilisé avec objdump, syntaxe AT&T
-
-Registres et rôles généraux (peut ne pas servir à ça) :
-- %ebp : base pointer, pointe à la base de la pile
-- %esp : stack pointer, pointe à l'endroit courant de la pile
-- %eax : accumulateur pour les opérations arithmétiques, valeur de retour
-- %ebx : valeur non-volatile
-- %ecx : compteur de boucle
-- %edx : variable locale, paramètre de fonction
-- %esi : indice de source, pour les string généralement
+#Notes personnelles pour le challenge :
 
 ##Analyse de <\_start> (inutile ?)
 
@@ -331,3 +320,18 @@ int r(int x, int y) {
 
 [...]
 ```
+
+
+## Remarques
+
+
+Utilisé avec objdump, syntaxe AT&T
+
+Registres et rôles généraux (peut ne pas servir à ça) :
+- %ebp : base pointer, pointe à la base de la pile
+- %esp : stack pointer, pointe à l'endroit courant de la pile
+- %eax : accumulateur pour les opérations arithmétiques, valeur de retour
+- %ebx : valeur non-volatile
+- %ecx : compteur de boucle
+- %edx : variable locale, paramètre de fonction
+- %esi : indice de source, pour les string généralement
