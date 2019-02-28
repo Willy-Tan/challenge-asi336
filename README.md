@@ -167,7 +167,7 @@ Avec a = '3', ça peut marcher !
 1 	: push   	%ebp
 2 	: mov    	%esp,%ebp
 3 	: push   	%ebx
-4 	: sub    	$0x18,%esp 						> %esp <- %esp - 24
+4 	: sub    	$0x18,%esp 						
 5 	: call   	8049e74 <__x86.get_pc_thunk.ax>
 6 	: add    	$0x914bf,%eax
 
@@ -176,26 +176,26 @@ Avec a = '3', ça peut marcher !
 9 	: mov    	%dl,-0x18(%ebp) 				> %ebp - 24 <- %dl = x
 10 	: mov    	%al,-0x1c(%ebp) 				> %ebp - 28 <- %al = y
 11 	: movzbl 	-0x1c(%ebp),%eax 				> %eax <- %ebp - 28 = y
-12 	: and    	$0x7,%eax 						> %eax = %eax & 7 = y&7
+12 	: and    	$0x7,%eax 					> %eax = %eax & 7 = y&7
 13 	: mov    	%al,-0x5(%ebp) 					> %ebp - 5 <- %al = y&7 
 14 	: movzbl 	-0x18(%ebp),%edx 				> %edx <- %ebp - 24 = x
 15 	: movzbl 	-0x5(%ebp),%eax 				> %eax <- %ebp - 5 = y&7
-16 	: mov    	%eax,%ecx 						> %ecx <- %eax = y&7
-17 	: sar    	%cl,%edx 						> on shifte %edx de %cl vers la droite, et on garde le signe, %edx = x >> y&7
-18 	: mov    	%edx,%eax 						> %eax <- %edx = x >> y&7 
-19 	: mov    	%eax,%ebx 						> %ebx <- %eax = x >> y&7
-20 	: movzbl 	-0x18(%ebp),%edx 				> %edx <- %ebp-24, zero extended == x
-21 	: movzbl 	-0x5(%ebp),%eax 				> %eax <- %ebp-5, zero extended  == y&7
-22 	: mov    	$0x8,%ecx						> %ecx <- 8
-23 	: sub    	%eax,%ecx						> %ecx <- %ecx - %eax = 8 - y&7
-24 	: mov    	%ecx,%eax 						> %eax <- %ecx = 8 - y&7
-25 	: mov    	%eax,%ecx 						> %ecx <- %eax = 8 - y&7
-26 	: shl    	%cl,%edx 						> %edx <- %edx = x << 8 - y&7
-27 	: mov    	%edx,%eax 						> %eax <- %edx = x << 8 - y&7
-28 	: or     	%ebx,%eax 						> %eax <- x << 8 - y&7 ||  x >> y&7
-29 	: add    	$0x18,%esp 						> %esp += 24
-30 	: pop    	%ebx 							> %ebx = *(%esp); %esp +=4 
-31 	: pop    	%ebp 							> %ebp = *(esp); %esp +=4
+16 	: mov    	%eax,%ecx 					> %ecx <- %eax = y&7
+17 	: sar    	%cl,%edx 					> on shifte %edx de %cl vers la droite, et on garde le signe, %edx = x >> y&7
+18 	: mov    	%edx,%eax 					> %eax <- %edx = x >> y&7 
+19 	: mov    	%eax,%ebx 					> %ebx <- %eax = x >> y&7
+20 	: movzbl 	-0x18(%ebp),%edx 			> %edx <- %ebp-24, zero extended == x
+21 	: movzbl 	-0x5(%ebp),%eax 			> %eax <- %ebp-5, zero extended  == y&7
+22 	: mov    	$0x8,%ecx					> %ecx <- 8
+23 	: sub    	%eax,%ecx					> %ecx <- %ecx - %eax = 8 - y&7
+24 	: mov    	%ecx,%eax 					> %eax <- %ecx = 8 - y&7
+25 	: mov    	%eax,%ecx 					> %ecx <- %eax = 8 - y&7
+26 	: shl    	%cl,%edx 					> %edx <- %edx = x << 8 - y&7
+27 	: mov    	%edx,%eax 					> %eax <- %edx = x << 8 - y&7
+28 	: or     	%ebx,%eax 					> %eax <- x << 8 - y&7 ||  x >> y&7
+29 	: add    	$0x18,%esp 					> %esp += 24
+30 	: pop    	%ebx 						> %ebx = *(%esp); %esp +=4 
+31 	: pop    	%ebp 						> %ebp = *(esp); %esp +=4
 32 	: ret    
 ```
 
