@@ -437,5 +437,6 @@ On obtient bien un "Success !" avec les chaînes :
  - J'ai utilisé objdump, avec une syntaxe AT&T.
  - J'avais retiré les adresses pour les remplacer par des numérotations commençant à 1 pour que ça soit plus lisible.
  - J'ai passé du temps à décortiquer `<main>` et `<_start>`, ce qui n'a pas été utile.
+ - J'ai utilisé un tableur pour résoudre les équations finales.
  - J'avais fait une erreur de frappe en écrivant 0x6b à la place de 0x3b dans <check_char_5>, ce qui a été très dur à voir car je n'avais aucun moyen de m'en rendre compte rapidement.
  - Beaucoup de café a été bu.  
