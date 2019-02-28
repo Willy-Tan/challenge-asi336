@@ -184,8 +184,8 @@ Avec a = '3', ça peut marcher !
 17 	: sar    	%cl,%edx 					> on shifte %edx de %cl vers la droite, et on garde le signe, %edx = x >> y&7
 18 	: mov    	%edx,%eax 					> %eax <- %edx = x >> y&7 
 19 	: mov    	%eax,%ebx 					> %ebx <- %eax = x >> y&7
-20 	: movzbl 	-0x18(%ebp),%edx 			> %edx <- %ebp-24, zero extended == x
-21 	: movzbl 	-0x5(%ebp),%eax 			> %eax <- %ebp-5, zero extended  == y&7
+20 	: movzbl 	-0x18(%ebp),%edx 				> %edx <- %ebp-24, zero extended == x
+21 	: movzbl 	-0x5(%ebp),%eax 				> %eax <- %ebp-5, zero extended  == y&7
 22 	: mov    	$0x8,%ecx					> %ecx <- 8
 23 	: sub    	%eax,%ecx					> %ecx <- %ecx - %eax = 8 - y&7
 24 	: mov    	%ecx,%eax 					> %eax <- %ecx = 8 - y&7
