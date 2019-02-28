@@ -69,11 +69,11 @@ avec `a = 'C'`, ça devrait marcher !
 7 	: mov    	0x8(%ebp),%eax 					> %eax <- %ebp + 8
 8 	: mov    	%al,-0x8(%ebp)					> %ebp - 8 <- %al
 9 	: movzbl 	-0x8(%ebp),%ebx 				> %ebx <- %ebp - 8 == %al
-10 	: shl    	$0x5,%ebx 						> %ebx << 5 // = %ebx * 32
+10 	: shl    	$0x5,%ebx 					> %ebx << 5 // = %ebx * 32
 11 	: and    	$0xffffffef,%ebx				> %ebx <- %ebx & 0xffffffef
-12 	: test   	%bl,%bl 						> Si %bl == 0
-13 	: je     	8049bfb <check_char_1+0x2c> 	> On renvoie 1
-14 	: mov    	$0x0,%eax 						> Sinon on renvoie 0
+12 	: test   	%bl,%bl 					> Si %bl == 0
+13 	: je     	8049bfb <check_char_1+0x2c> 			> On renvoie 1
+14 	: mov    	$0x0,%eax 					> Sinon on renvoie 0
 15 	: jmp    	8049c00 <check_char_1+0x31> 
 16 	: mov    	$0x1,%eax 						
 [//Sortie de fonction]
@@ -116,17 +116,17 @@ avec `a = 'H'` ou `a = 'P'` ou `a = 'X'` ou <code>a = '\`'</code> ou `a = 'h'` o
 7 	: mov    	0x8(%ebp),%eax 					> %eax <- %ebp + 8
 8 	: mov    	%al,-0x8(%ebp) 					> %ebp - 8 <- %al
 9 	: movzbl	-0x8(%ebp),%ebx 				> %ebx <- %ebp - 8 = %al
-10 	: movzbl 	%bl,%eax						> %eax <- %bl zero extended
-11 	: push   	$0x82 							> on empile 0x82
-12 	: push   	%eax							> on empile %eax
-13 	: call   	8049b35 <r>						> on appelle <r> sur %eax et %0x82
-14 	: add    	$0x8,%esp						> %esp <- %esp + 8 	== 0x82
-15 	: mov    	%eax,%ebx 						> %ebx < %eax = %bl = %al zero extended
-16 	: cmp    	$0xcc,%bl 						> %bl == 0xcc ?
-17 	: je     	8049c40 <check_char_2+0x3a> 	> si oui on saute ligne 20
-18 	: mov    	$0x0,%eax 						> si non on retourne 0
-19 	: jmp    	8049c45 <check_char_2+0x3f>		> puis on sort
-20 	: mov    	$0x1,%eax 						> on retourne 1
+10 	: movzbl 	%bl,%eax					> %eax <- %bl zero extended
+11 	: push   	$0x82 						> on empile 0x82
+12 	: push   	%eax						> on empile %eax
+13 	: call   	8049b35 <r>					> on appelle <r> sur %eax et %0x82
+14 	: add    	$0x8,%esp					> %esp <- %esp + 8 	== 0x82
+15 	: mov    	%eax,%ebx 					> %ebx < %eax = %bl = %al zero extended
+16 	: cmp    	$0xcc,%bl 					> %bl == 0xcc ?
+17 	: je     	8049c40 <check_char_2+0x3a> 			> si oui on saute ligne 20
+18 	: mov    	$0x0,%eax 					> si non on retourne 0
+19 	: jmp    	8049c45 <check_char_2+0x3f>			> puis on sort
+20 	: mov    	$0x1,%eax 					> on retourne 1
 21  : mov   	-0x4(%ebp),%ebx
 22 	: leave  
 23 	: ret    
