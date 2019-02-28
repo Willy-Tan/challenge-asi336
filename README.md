@@ -19,15 +19,15 @@ Analysons-le code assembleur :
 7 	: mov 		0x8(%ebp),%eax 					> %eax <- %ebp + 8
 8 	: mov 		%al,-0x8(%ebp) 					> %ebp - 8 <- %al 
 9 	: movzbl 	-0x8(%ebp),%ebx		 			> %ebx <- %ebp - 8 = %al zero extended
-10 	: sub 		$0x3f,%ebx 						> %ebx <- %ebx - 63
-11 	: sub 		$0x74,%ebx 						> %ebx <- %ebx - 116
-12 	: mov 		$0x4e,%edx 						> %edx <- 78
-13 	: mov 		%ebx,%eax 						> %eax <- ebx = %al - 63 - 116 
-14 	: imul 		%edx,%eax 						> %eax <- %eax * %edx = (%al - 63 - 116) * 78
-15 	: mov 		%eax,%ebx 						> %ebx <- %eax 
+10 	: sub 		$0x3f,%ebx 					> %ebx <- %ebx - 63
+11 	: sub 		$0x74,%ebx 					> %ebx <- %ebx - 116
+12 	: mov 		$0x4e,%edx 					> %edx <- 78
+13 	: mov 		%ebx,%eax 					> %eax <- ebx = %al - 63 - 116 
+14 	: imul 		%edx,%eax 					> %eax <- %eax * %edx = (%al - 63 - 116) * 78
+15 	: mov 		%eax,%ebx 					> %ebx <- %eax 
 16 	: cmp 		$0xe0,%bl 						
-17 	: je 		8049bc4 <check_char_0+0x39> 	> si %bl == 224 on renvoie 1
-18 	: mov 		$0x0,%eax						> sinon on renvoie 0
+17 	: je 		8049bc4 <check_char_0+0x39> 			> si %bl == 224 on renvoie 1
+18 	: mov 		$0x0,%eax					> sinon on renvoie 0
 19 	: jmp 		8049bc9 <check_char_0+0x3e>		
 20 	: mov 		$0x1,%eax 						
 [//Sortie de fonction]
