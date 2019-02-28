@@ -28,7 +28,7 @@
 ```
 
 
-## Analyse de <check>
+## Analyse de \<check>
 
 ```
 //stack setup
