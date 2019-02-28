@@ -227,9 +227,9 @@ int r(int x, int y) {
 12	: imul   %edx,%eax 						> %eax <- %eax * %edx = %al * 62
 13	: mov    %eax,%ebx 						> %ebx <- %eax = %al * 62
 14	: xor    $0x65,%ebx 						> %ebx <- %ebx ^ 0x65 = %(al*62)^101
-15	: cmp    $0x35,%bl 							> si %ebx % 256 == 53...
+15	: cmp    $0x35,%bl 						> si %ebx % 256 == 53...
 16	: je     8049c80 <check_char_3+0x36> 				> on renvoie 1 
-17	: mov    $0x0,%eax							> sinon on renvoie 0
+17	: mov    $0x0,%eax						> sinon on renvoie 0
 18	: jmp    8049c85 <check_char_3+0x3b>
 19	: mov    $0x1,%eax
 20	: add    $0x4,%esp
@@ -272,17 +272,17 @@ avec `a = 'X'`, ça peut marcher !
 5 	: call   8049e74 <__x86.get_pc_thunk.ax>
 6 	: add    $0x91369,%eax
 
-7 	: mov    0x8(%ebp),%eax 				> %eax <- %ebp + 8
-8	: mov    %al,-0x8(%ebp)	 				> %ebp - 8 <- %al = %eax % 256
-9	: movzbl -0x8(%ebp),%ebx	 			> %ebx <- %ebp - 8 = %eax
-10	: mov    $0x74,%edx 					> %edx <- 0x74
-11	: mov    %ebx,%eax 					> %eax <- %ebx
-12	: imul   %edx,%eax					> %eax <- %eax * %edx = %eax * 0x74
-13	: mov    %eax,%ebx 					> %ebx <- %eax
-14	: not    %ebx 						> %ebx <- !%ebx
-15	: cmp    $0xbf,%bl 					> Si %bl == 0xbf...
-16	: je     8049cc0 <check_char_4+0x35 			> On renvoie 1
-17	: mov    $0x0,%eax					> Sinon on renvoie 0
+7 	: mov    0x8(%ebp),%eax 					> %eax <- %ebp + 8
+8	: mov    %al,-0x8(%ebp)	 					> %ebp - 8 <- %al = %eax % 256
+9	: movzbl -0x8(%ebp),%ebx	 				> %ebx <- %ebp - 8 = %eax
+10	: mov    $0x74,%edx 						> %edx <- 0x74
+11	: mov    %ebx,%eax 						> %eax <- %ebx
+12	: imul   %edx,%eax						> %eax <- %eax * %edx = %eax * 0x74
+13	: mov    %eax,%ebx 						> %ebx <- %eax
+14	: not    %ebx 							> %ebx <- !%ebx
+15	: cmp    $0xbf,%bl 						> Si %bl == 0xbf...
+16	: je     8049cc0 <check_char_4+0x35 				> On renvoie 1
+17	: mov    $0x0,%eax						> Sinon on renvoie 0
 18	: jmp    8049cc5 <check_char_4+0x3a>
 19	: mov    $0x1,%eax
 20	: add    $0x4,%esp
