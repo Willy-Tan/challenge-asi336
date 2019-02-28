@@ -1,32 +1,8 @@
 # Notes personnelles pour le challenge :
 
-## Analyse de <\_start> (inutile ?)
+On remarque assez vite les symboles des fonctions importantes à regarder : les fonctions `check`, et les `check_char_*`.
 
-```
-//Stack frame setup
-0 	: xor 	%ebp, %ebp						> on remet %ebp à 0
-1 	: pop 	%esi 							> ??
-2 	: mov 	%esp, %ecx 						> on met le contenu de %esp dans %ecx >> Remonter jusqu'à %esp 
-3 	: and 	$0xfffffff0,%esp				> on retire les 4 derniers bits de %esp
-4 	: push 	%eax							> on met %eax dans la pile
-5 	: push 	%esp 							> on met %esp dans la pile
-6 	: push  %edx 							> on met %edx dans la pile
-7 	: call 	80499f3 <_start+0x33>			> on va à la ligne 19 et on stock dans ret l'instruction 8
-8 	: add 	$0x91630,%ebx 					> on additionne 0x91630 à %ebx >> contenu de ebx ?
-9 	: lea 	-0x90470(%ebx),%eax				> chargement de l'adresse %ebx - 0x90470 dans %eax
-10	: push 	%eax 							> on met %eax dans la pile == %ebx - 0x90470
-11 	: lea 	-0x90510(%ebx),%eax 			> chargement de l'adresse %ebx - 0x90510 dans %eax
-12	: push 	%eax 							> on met %eax dans la pile == %ebx - 0x90510
-12	: push 	%ecx 							> on met %ecx dans la pile == contenu de %esp
-13 	: push 	%esi							> on met %esi dans la pile = contenu pop en 1 ?
-14  : mov 	$0x8049db2,%eax	 				> on met l'adresse de <main> dans %eax
-15 	: push 	%eax 							> on met main dans la pile
-16 	: call 	804a0d0 <__libc_start_main>		> on appelle <__libc_start_main>
-17 	: hlt									> on attend qu'un signal interrupt arrive
-18 	: mov 	(%esp),%ebx						> on met le contenu de %esp dans %ebx
-19	: ret 									> on retourne à la ligne 8
-```
-
+Analysons-le code assembleur : 
 
 ## Analyse de <check_char_0>
 
@@ -445,45 +421,21 @@ int check(char* chaine) {
 }
 ```
 
+## Résultats
 
+On obtient bien un "Success !" avec les chaînes :
+ - CH3XPk
+ - CP3XPk
+ - CX3XPk
+ - C\`3XPk
+ - Ch3XPk
+ - Cp3XPk
+ - Cx3XPk
 
-## Analyse de <main> 
+## Remarques personnelles
 
-```
-//Setup de la stackframe
-0 	: lea 		0x4(%esp),%ecx 					
-1 	: and 		$0xfffffff0,%esp				
-2 	: pushl		-0x4(%ecx) 						
-3 	: push 		%ebp 							
-4 	: mov 		%esp,%ebp 						
-5 	: push 		%ebx 							
-6 	: push 		%ecx 							
-7 	: sub 		$0x10,%esp 						 
-
-8 	: call 		8049a10 <__x86.get_pc_thunk.bx> 
-9 	: add 		$0x91237,%ebx					
-10	: mov 		%gs:0x14,%eax 					
-11 	: mov 		%eax,-0xc(%ebp)					
-12 	: xor 		%eax,%eax 						
-13 	: movl 		$0x0,-0x18(%ebp) 				
-14 	: movl 		$0x0,-0x14(%ebp)				
-15 	: movl 		$0x0,-0x10(%ebp)				
-16	: sub 		$0xc,%esp						
-
-[...]
-```
-
-
-## Remarques
-
-
-Utilisé avec objdump, syntaxe AT&T
-
-Registres et rôles généraux (peut ne pas servir à ça) :
-- %ebp : base pointer, pointe à la base de la pile
-- %esp : stack pointer, pointe à l'endroit courant de la pile
-- %eax : accumulateur pour les opérations arithmétiques, valeur de retour
-- %ebx : valeur non-volatile
-- %ecx : compteur de boucle
-- %edx : variable locale, paramètre de fonction
-- %esi : indice de source, pour les string généralement
+ - J'ai utilisé objdump, avec une syntaxe AT&T.
+ - J'avais retiré les adresses pour les remplacer par des numérotations commençant à 1 pour que ça soit plus lisible.
+ - J'ai passé du temps à décortiquer `<main>` et `<_start>`, ce qui n'a pas été utile.
+ - J'avais fait une erreur de frappe en écrivant 0x6b à la place de 0x3b dans <check_char_5>, ce qui a été très dur à voir car je n'avais aucun moyen de m'en rendre compte rapidement.
+ - Beaucoup de café a été bu.  
